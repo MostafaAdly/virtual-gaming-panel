@@ -1,0 +1,86 @@
+---- Minecraft Crash Report ----
+// This doesn't make any sense!
+
+Time: 4/27/23, 12:36 AM
+Description: Sending packet
+
+java.util.concurrent.RejectedExecutionException: event executor terminated
+	at io.netty.util.concurrent.SingleThreadEventExecutor.reject(SingleThreadEventExecutor.java:745)
+	at io.netty.util.concurrent.SingleThreadEventExecutor.addTask(SingleThreadEventExecutor.java:322)
+	at io.netty.util.concurrent.SingleThreadEventExecutor.execute(SingleThreadEventExecutor.java:728)
+	at net.minecraft.server.v1_8_R3.NetworkManager.a(NetworkManager.java:192)
+	at net.minecraft.server.v1_8_R3.NetworkManager.handle(NetworkManager.java:141)
+	at net.minecraft.server.v1_8_R3.PlayerConnection.sendPacket(PlayerConnection.java:907)
+	at net.minecraft.server.v1_8_R3.PlayerChunkMap$PlayerChunk.a(PlayerChunkMap.java:445)
+	at net.minecraft.server.v1_8_R3.PlayerChunkMap$PlayerChunk.b(PlayerChunkMap.java:463)
+	at net.minecraft.server.v1_8_R3.PlayerChunkMap.flush(PlayerChunkMap.java:59)
+	at net.minecraft.server.v1_8_R3.WorldServer.doTick(WorldServer.java:257)
+	at net.minecraft.server.v1_8_R3.MinecraftServer.B(MinecraftServer.java:770)
+	at net.minecraft.server.v1_8_R3.DedicatedServer.B(DedicatedServer.java:374)
+	at net.minecraft.server.v1_8_R3.MinecraftServer.A(MinecraftServer.java:654)
+	at net.minecraft.server.v1_8_R3.MinecraftServer.run(MinecraftServer.java:557)
+	at java.base/java.lang.Thread.run(Thread.java:1589)
+
+
+A detailed walkthrough of the error, its code path and all known details is as follows:
+---------------------------------------------------------------------------------------
+
+-- Head --
+Stacktrace:
+	at io.netty.util.concurrent.SingleThreadEventExecutor.reject(SingleThreadEventExecutor.java:745)
+	at io.netty.util.concurrent.SingleThreadEventExecutor.addTask(SingleThreadEventExecutor.java:322)
+	at io.netty.util.concurrent.SingleThreadEventExecutor.execute(SingleThreadEventExecutor.java:728)
+	at net.minecraft.server.v1_8_R3.NetworkManager.a(NetworkManager.java:192)
+	at net.minecraft.server.v1_8_R3.NetworkManager.handle(NetworkManager.java:141)
+
+-- Packet being sent --
+Details:
+	Packet class: net.minecraft.server.v1_8_R3.PacketPlayOutBlockChange
+Stacktrace:
+	at net.minecraft.server.v1_8_R3.PlayerConnection.sendPacket(PlayerConnection.java:907)
+	at net.minecraft.server.v1_8_R3.PlayerChunkMap$PlayerChunk.a(PlayerChunkMap.java:445)
+	at net.minecraft.server.v1_8_R3.PlayerChunkMap$PlayerChunk.b(PlayerChunkMap.java:463)
+	at net.minecraft.server.v1_8_R3.PlayerChunkMap.flush(PlayerChunkMap.java:59)
+	at net.minecraft.server.v1_8_R3.WorldServer.doTick(WorldServer.java:257)
+
+-- Affected level --
+Details:
+	Level name: world
+	All players: 1 total; [EntityPlayer['MostafaAdly'/171, l='world', x=127.17, y=120.00, z=293.53](MostafaAdly at 127.1679613435173,120.0,293.52719247346806)]
+	Chunk stats: ServerChunkCache: 555 Drop: 0
+	Level seed: -7703234191061041250
+	Level generator: ID 00 - default, ver 1. Features enabled: true
+	Level generator options: 
+	Level spawn location: 236.00,64.00,212.00 - World: (236,64,212), Chunk: (at 12,4,4 in 14,13; contains blocks 224,0,208 to 239,255,223), Region: (0,0; contains chunks 0,0 to 31,31, blocks 0,0,0 to 511,255,511)
+	Level time: 429474 game time, 429474 day time
+	Level dimension: 0
+	Level storage version: 0x04ABD - Anvil
+	Level weather: Rain time: 129697 (now: false), thunder time: 2301 (now: true)
+	Level game mode: Game mode: survival (ID 0). Hardcore: false. Cheats: false
+Stacktrace:
+	at net.minecraft.server.v1_8_R3.MinecraftServer.B(MinecraftServer.java:770)
+	at net.minecraft.server.v1_8_R3.DedicatedServer.B(DedicatedServer.java:374)
+	at net.minecraft.server.v1_8_R3.MinecraftServer.A(MinecraftServer.java:654)
+	at net.minecraft.server.v1_8_R3.MinecraftServer.run(MinecraftServer.java:557)
+	at java.base/java.lang.Thread.run(Thread.java:1589)
+
+-- System Details --
+Details:
+	Minecraft Version: 1.8.8
+	Operating System: Windows 11 (amd64) version 10.0
+	Java Version: 19.0.1, Oracle Corporation
+	Java VM Version: Java HotSpot(TM) 64-Bit Server VM (mixed mode, sharing), Oracle Corporation
+	Memory: 213216 bytes (0 MB) / 1073741824 bytes (1024 MB) up to 1073741824 bytes (1024 MB)
+	JVM Flags: 2 total; -Xms512M -Xmx1G
+	IntCache: cache: 0, tcache: 0, allocated: 12, tallocated: 94
+	CraftBukkit Information: 
+   Running: CraftBukkit version git-Spigot-21fe707-741a1bd (MC: 1.8.8) (Implementing API version 1.8.8-R0.1-SNAPSHOT) true
+   Plugins: { WorldEdit v6.1.9;caf0ad9 com.sk89q.worldedit.bukkit.WorldEditPlugin [],}
+   Warnings: DEFAULT
+   Reload Count: 0
+   Threads: { WAITING Finalizer: [java.base@19.0.1/java.lang.Object.wait0(Native Method), java.base@19.0.1/java.lang.Object.wait(Object.java:366), java.base@19.0.1/java.lang.Object.wait(Object.java:339), java.base@19.0.1/java.lang.ref.NativeReferenceQueue.await(NativeReferenceQueue.java:48), java.base@19.0.1/java.lang.ref.ReferenceQueue.remove0(ReferenceQueue.java:158), java.base@19.0.1/java.lang.ref.NativeReferenceQueue.remove(NativeReferenceQueue.java:89), java.base@19.0.1/java.lang.ref.Finalizer$FinalizerThread.run(Finalizer.java:173)], TIMED_WAITING Common-Cleaner: [java.base@19.0.1/jdk.internal.misc.Unsafe.park(Native Method), java.base@19.0.1/java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:269), java.base@19.0.1/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:1759), java.base@19.0.1/java.lang.ref.ReferenceQueue.await(ReferenceQueue.java:71), java.base@19.0.1/java.lang.ref.ReferenceQueue.remove0(ReferenceQueue.java:143), java.base@19.0.1/java.lang.ref.ReferenceQueue.remove(ReferenceQueue.java:218), java.base@19.0.1/jdk.internal.ref.CleanerImpl.run(CleanerImpl.java:140), java.base@19.0.1/java.lang.Thread.run(Thread.java:1589), java.base@19.0.1/jdk.internal.misc.InnocuousThread.run(InnocuousThread.java:186)], TIMED_WAITING File IO Thread: [java.base@19.0.1/java.lang.Thread.sleep0(Native Method), java.base@19.0.1/java.lang.Thread.sleep(Thread.java:465), app//net.minecraft.server.v1_8_R3.FileIOThread.c(FileIOThread.java:52), app//net.minecraft.server.v1_8_R3.FileIOThread.run(FileIOThread.java:28), java.base@19.0.1/java.lang.Thread.run(Thread.java:1589)], RUNNABLE Reference Handler: [java.base@19.0.1/java.lang.ref.Reference.waitForReferencePendingList(Native Method), java.base@19.0.1/java.lang.ref.Reference.processPendingReferences(Reference.java:245), java.base@19.0.1/java.lang.ref.Reference$ReferenceHandler.run(Reference.java:207)], RUNNABLE DestroyJavaVM: [], TIMED_WAITING Server Infinisleeper: [java.base@19.0.1/java.lang.Thread.sleep0(Native Method), java.base@19.0.1/java.lang.Thread.sleep(Thread.java:465), app//net.minecraft.server.v1_8_R3.DedicatedServer$1.run(DedicatedServer.java:54)], RUNNABLE Server console handler: [java.base@19.0.1/java.io.FileInputStream.readBytes(Native Method), java.base@19.0.1/java.io.FileInputStream.read(FileInputStream.java:293), java.base@19.0.1/java.io.BufferedInputStream.fill(BufferedInputStream.java:255), java.base@19.0.1/java.io.BufferedInputStream.implRead(BufferedInputStream.java:289), java.base@19.0.1/java.io.BufferedInputStream.read(BufferedInputStream.java:276), app//org.bukkit.craftbukkit.libs.jline.internal.NonBlockingInputStream.read(NonBlockingInputStream.java:248), app//org.bukkit.craftbukkit.libs.jline.internal.InputStreamReader.read(InputStreamReader.java:261), app//org.bukkit.craftbukkit.libs.jline.internal.InputStreamReader.read(InputStreamReader.java:198), app//org.bukkit.craftbukkit.libs.jline.console.ConsoleReader.readCharacter(ConsoleReader.java:2145), app//org.bukkit.craftbukkit.libs.jline.console.ConsoleReader.readLineSimple(ConsoleReader.java:3183), app//org.bukkit.craftbukkit.libs.jline.console.ConsoleReader.readLine(ConsoleReader.java:2333), app//org.bukkit.craftbukkit.libs.jline.console.ConsoleReader.readLine(ConsoleReader.java:2269), app//org.bukkit.craftbukkit.libs.jline.console.ConsoleReader.readLine(ConsoleReader.java:2257), app//net.minecraft.server.v1_8_R3.DedicatedServer$2.run(DedicatedServer.java:81)], RUNNABLE Notification Thread: [], TIMED_WAITING Snooper Timer: [java.base@19.0.1/java.lang.Object.wait0(Native Method), java.base@19.0.1/java.lang.Object.wait(Object.java:366), java.base@19.0.1/java.util.TimerThread.mainLoop(Timer.java:563), java.base@19.0.1/java.util.TimerThread.run(Timer.java:516)], TIMED_WAITING Spigot Watchdog Thread: [java.base@19.0.1/java.lang.Thread.sleep0(Native Method), java.base@19.0.1/java.lang.Thread.sleep(Thread.java:465), app//org.spigotmc.WatchdogThread.run(WatchdogThread.java:92)], RUNNABLE Attach Listener: [], WAITING Chunk I/O Executor Thread-1: [java.base@19.0.1/jdk.internal.misc.Unsafe.park(Native Method), java.base@19.0.1/java.util.concurrent.locks.LockSupport.park(LockSupport.java:371), java.base@19.0.1/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionNode.block(AbstractQueuedSynchronizer.java:506), java.base@19.0.1/java.util.concurrent.ForkJoinPool.unmanagedBlock(ForkJoinPool.java:3744), java.base@19.0.1/java.util.concurrent.ForkJoinPool.managedBlock(ForkJoinPool.java:3689), java.base@19.0.1/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:1625), java.base@19.0.1/java.util.concurrent.LinkedBlockingQueue.take(LinkedBlockingQueue.java:435), java.base@19.0.1/java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:1070), java.base@19.0.1/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1130), java.base@19.0.1/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642), java.base@19.0.1/java.lang.Thread.run(Thread.java:1589)], RUNNABLE RCON Client #2: [java.base@19.0.1/sun.nio.ch.SocketDispatcher.read0(Native Method), java.base@19.0.1/sun.nio.ch.SocketDispatcher.read(SocketDispatcher.java:46), java.base@19.0.1/sun.nio.ch.NioSocketImpl.tryRead(NioSocketImpl.java:251), java.base@19.0.1/sun.nio.ch.NioSocketImpl.implRead(NioSocketImpl.java:302), java.base@19.0.1/sun.nio.ch.NioSocketImpl.read(NioSocketImpl.java:340), java.base@19.0.1/sun.nio.ch.NioSocketImpl$1.read(NioSocketImpl.java:789), java.base@19.0.1/java.net.Socket$SocketInputStream.read(Socket.java:1025), java.base@19.0.1/java.io.BufferedInputStream.fill(BufferedInputStream.java:255), java.base@19.0.1/java.io.BufferedInputStream.read1(BufferedInputStream.java:310), java.base@19.0.1/java.io.BufferedInputStream.implRead(BufferedInputStream.java:382), java.base@19.0.1/java.io.BufferedInputStream.read(BufferedInputStream.java:361), app//net.minecraft.server.v1_8_R3.RemoteControlSession.run(SourceFile:46), java.base@19.0.1/java.lang.Thread.run(Thread.java:1589)], WAITING Thread-2: [java.base@19.0.1/jdk.internal.misc.Unsafe.park(Native Method), java.base@19.0.1/java.util.concurrent.locks.LockSupport.park(LockSupport.java:371), java.base@19.0.1/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionNode.block(AbstractQueuedSynchronizer.java:506), java.base@19.0.1/java.util.concurrent.ForkJoinPool.unmanagedBlock(ForkJoinPool.java:3744), java.base@19.0.1/java.util.concurrent.ForkJoinPool.managedBlock(ForkJoinPool.java:3689), java.base@19.0.1/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:1625), java.base@19.0.1/java.util.concurrent.LinkedBlockingQueue.take(LinkedBlockingQueue.java:435), app//com.mojang.util.QueueLogAppender.getNextLogEvent(QueueLogAppender.java:77), app//org.bukkit.craftbukkit.v1_8_R3.util.TerminalConsoleWriterThread.run(TerminalConsoleWriterThread.java:25), java.base@19.0.1/java.lang.Thread.run(Thread.java:1589)], TIMED_WAITING Spigot Metrics Thread: [java.base@19.0.1/java.lang.Object.wait0(Native Method), java.base@19.0.1/java.lang.Object.wait(Object.java:366), java.base@19.0.1/java.util.TimerThread.mainLoop(Timer.java:563), java.base@19.0.1/java.util.TimerThread.run(Timer.java:516)], RUNNABLE Signal Dispatcher: [], RUNNABLE Server thread: [java.base@19.0.1/java.lang.Thread.dumpThreads(Native Method), java.base@19.0.1/java.lang.Thread.getAllStackTraces(Thread.java:2621), app//org.bukkit.craftbukkit.v1_8_R3.CraftCrashReport.call(CraftCrashReport.java:29), app//net.minecraft.server.v1_8_R3.CrashReportSystemDetails.a(SourceFile:78), app//net.minecraft.server.v1_8_R3.CrashReport.h(CrashReport.java:127), app//net.minecraft.server.v1_8_R3.CrashReport.<init>(CrashReport.java:34), app//net.minecraft.server.v1_8_R3.CrashReport.a(CrashReport.java:312), app//net.minecraft.server.v1_8_R3.PlayerConnection.sendPacket(PlayerConnection.java:909), app//net.minecraft.server.v1_8_R3.PlayerChunkMap$PlayerChunk.a(PlayerChunkMap.java:445), app//net.minecraft.server.v1_8_R3.PlayerChunkMap$PlayerChunk.b(PlayerChunkMap.java:463), app//net.minecraft.server.v1_8_R3.PlayerChunkMap.flush(PlayerChunkMap.java:59), app//net.minecraft.server.v1_8_R3.WorldServer.doTick(WorldServer.java:257), app//net.minecraft.server.v1_8_R3.MinecraftServer.B(MinecraftServer.java:770), app//net.minecraft.server.v1_8_R3.DedicatedServer.B(DedicatedServer.java:374), app//net.minecraft.server.v1_8_R3.MinecraftServer.A(MinecraftServer.java:654), app//net.minecraft.server.v1_8_R3.MinecraftServer.run(MinecraftServer.java:557), java.base@19.0.1/java.lang.Thread.run(Thread.java:1589)],}
+   Recent tasks from 1514-1544{}
+	Profiler Position: N/A (disabled)
+	Player Count: 1 / 10; [EntityPlayer['MostafaAdly'/171, l='world', x=127.17, y=120.00, z=293.53](MostafaAdly at 127.1679613435173,120.0,293.52719247346806)]
+	Is Modded: Definitely; Server brand changed to 'Spigot'
+	Type: Dedicated Server (map_server.txt)

@@ -1,0 +1,32 @@
+{
+  "name": "panel",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.mjs",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon index.js -e js,jsx,mjs,hbs,html,css"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^5.1.0",
+    "colors": "^1.4.0",
+    "dateformat": "^5.0.3",
+    "dotenv": "^16.0.3",
+    "ejs": "^3.1.9",
+    "express": "^4.18.2",
+    "hbs": "^4.2.0",
+    "minecraft-server-util": "^5.4.2",
+    "mysql": "^2.18.1",
+    "next": "^13.3.1",
+    "nodemon": "^2.0.22",
+    "pidusage": "^3.0.2",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "socket.io": "^4.6.1",
+    "socket.io-client": "^4.6.1",
+    "uuid": "^9.0.0"
+  }
+}

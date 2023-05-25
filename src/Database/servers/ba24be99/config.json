@@ -1,0 +1,20 @@
+{
+    "id": "ba24be99",
+    "name": "default",
+    "version": "1.8.8",
+    "properties": {
+        "jar": "spigot_188.jar",
+        "path": "./src/Database/servers/ba24be99/server",
+        "args": [
+            "-Xms512M",
+            "-Xmx1G"
+        ],
+        "eula": true,
+        "pipeStdout": false,
+        "properties": {
+            "motd": "Minecraft server",
+            "max-players": 10
+        }
+    },
+    "databases": []
+}

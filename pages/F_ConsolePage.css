@@ -1,0 +1,121 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* Set up the console container */
+.console {
+    background-color: black;
+    color: white;
+    font-family: monospace;
+    height: 650px;
+    overflow: auto;
+    padding: 10px;
+    white-space: pre-wrap;
+    display: block;
+    overflow-y: auto;
+}
+
+/* Style the input field */
+.console-input {
+    border: none;
+    background-color: transparent;
+    color: rgb(0, 0, 0);
+    font-family: monospace;
+    font-size: 14px;
+    height: 20px;
+    outline: none;
+    padding: 0;
+    width: 100%;
+    display: inline-block;
+}
+
+/* Style the submit button */
+.console-submit {
+    background-color: #4caf50;
+    border: none;
+    color: white;
+    cursor: pointer;
+    font-size: 14px;
+    margin-top: 10px;
+    padding: 5px;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #f0f0f0;
+}
+
+/* Style the server status panel */
+.status-panel {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+    padding: 20px;
+    background-color: white;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+}
+
+.status-panel h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.status-panel p {
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+/* Style the control buttons */
+.control-buttons {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.control-button {
+    background-color: #4caf50;
+    border: none;
+    color: white;
+    cursor: pointer;
+    font-size: 16px;
+    margin: 0 10px;
+    padding: 10px;
+    text-align: center;
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: background-color 0.3s ease;
+}
+
+.control-button:hover {
+    background-color: #3e8e41;
+}
+
+/* Style the RAM/CPU panels */
+.monitor-panel {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    background-color: white;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+}
+
+.monitor-panel h2 {
+    font-size: 24px;
+    margin-right: 10px;
+}
+
+.monitor-panel p {
+    font-size: 18px;
+    margin-left: 10px;
+}
